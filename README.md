@@ -39,6 +39,12 @@ launcher_window_name = Playnite
 # background_exe_1 = C:\Program Files (x86)\JoyToKey\JoyToKey.exe
 # background_exe_2 = C:\WINDOWS\system32\mspaint.exe
 
+[SESSION_END]
+# List as many exe's or bat's as you want here. They will run after the resolution is reset.
+# Example: Re-enable HDR settings after exiting streaming session.
+# end_exe_1 = C:\Some\Path\enable_hdr.bat
+# end_exe_2 = C:\Another\Path\script_to_run.exe
+
 [SETTINGS]
 # Set debug = 1 to leave a window running after gamestream to see error messages from GSLP
 debug = 0
