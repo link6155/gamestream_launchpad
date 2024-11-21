@@ -253,13 +253,18 @@ if skip_res_reset == False:
     print('Restoring original resolution.')
     win32api.ChangeDisplaySettings(None, 0)
 
+# Launch session_end programs after resolution reset
+if cfg_end_paths:
+    print('Executing programs after resolution reset.')
+    launch_processes(cfg_end_paths)
+
 # Kill gamestream
 if no_nv_kill == False:
     print("Terminating GameStream session.")
     if "nvstreamer.exe" in (get_process_name(p) for p in psutil.process_iter()):
         os.system('taskkill /f /im nvstreamer.exe')
 
-
+# Put computer to sleep if configured
 if sleep_on_exit == '1':
 # Put computer to sleep
     print("Going to sleep")
