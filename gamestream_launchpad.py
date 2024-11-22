@@ -57,7 +57,13 @@ def reset_launcher_resolution(gamestream_width, gamestream_height, launcher_wind
 def handle_processes(paths, terminate):
     for path in paths:
         expanded_path = os.path.expandvars(paths[path])
-        if os.path.exists(expanded_path):
+        if expanded_path.startswith("steam://"):
+            if terminate:
+                print("Terminating Steam games is not supported.")
+            else:
+                print("Launching Steam game:", expanded_path)
+                subprocess.run(["start", expanded_path], shell=True)
+        elif os.path.exists(expanded_path):
             exec_name = os.path.basename(expanded_path)
             print("Terminating" if terminate else "Launching", expanded_path)
             # Terminate even if launching, so that we kill it if it's already running
